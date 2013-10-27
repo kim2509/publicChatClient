@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/btnYear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="birthYear_Clicked"
+        android:layout_weight="33" />
+
+    <Button
+        android:id="@+id/btnYear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="birthYear_Clicked"
+        android:layout_weight="34" />
+
+    <Button
+        android:id="@+id/btnYear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="birthYear_Clicked"
+        android:layout_weight="33" />
+
+</LinearLayout>
