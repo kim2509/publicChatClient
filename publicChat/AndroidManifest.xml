@@ -34,13 +34,18 @@
         </activity>
         <activity
             android:name="com.dy.publicchat.IntroActivity"
-            android:label="@string/title_activity_intro" 
+            android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dy.publicchat.RegisterAsRandomID"
+            android:label="@string/title_activity_register_as_random_id"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
     </application>
 
