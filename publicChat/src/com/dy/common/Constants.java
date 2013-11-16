@@ -11,4 +11,5 @@ public class Constants {
 	public static int REQUESTCODE_COMMON = 1;
 	public static int REQUESTCODE_SAVE_SEX = 2;
 	public static int REQUESTCODE_SAVE_BIRTHYEAR = 3;
+	public static int REQUESTCODE_SAVE_USER_PROFILE_KEYWORDS = 4;
 }

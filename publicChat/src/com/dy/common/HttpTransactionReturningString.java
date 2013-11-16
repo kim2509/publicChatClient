@@ -9,6 +9,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.dy.publicchat.BaseActivity;
@@ -17,7 +18,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class HttpTransactionReturningString extends AsyncTask<JSONObject, Integer, String> {
+public class HttpTransactionReturningString extends AsyncTask<Object, Integer, String> {
 
 	private ProgressDialog dialog = null;
 	private String url = "";
@@ -43,14 +44,16 @@ public class HttpTransactionReturningString extends AsyncTask<JSONObject, Intege
 		}
 	}
 
-	protected String doInBackground( JSONObject... data ) {
+	protected String doInBackground( Object... data ) {
 
 		try
 		{
 			HttpClient client = new DefaultHttpClient();
 			HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000); //Timeout Limit
 			HttpResponse response;
-			JSONObject json = data[0];
+			
+			Object json = data[0];
+			
 			HttpPost post = new HttpPost( Constants.serverURL + url );
 			StringEntity se = new StringEntity( json.toString(), "UTF-8");
 			se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));

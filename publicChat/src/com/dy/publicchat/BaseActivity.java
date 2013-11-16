@@ -159,7 +159,7 @@ public class BaseActivity extends Activity {
 		Log.i("publicChat", log );
 	}
 	
-	public void execTransReturningString( String url, JSONObject request, int requestCode, boolean bModal )
+	public void execTransReturningString( String url, Object request, int requestCode, boolean bModal )
 	{
 		new HttpTransactionReturningString( this, url, requestCode,  bModal ).execute( request );
 	}

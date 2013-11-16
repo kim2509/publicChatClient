@@ -7,113 +7,134 @@
     android:orientation="vertical"
     tools:context=".RegisterAsRandomID" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/welcome_msg" />
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layoutInputSex"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
-        <RelativeLayout
-            android:id="@+id/layoutInputSex"
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/welcome_msg" />
+
+        <TextView
+            android:id="@+id/txtInputSex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true" >
+            android:text="@string/msg_input_sex" 
+            android:layout_below="@+id/txtWelcome"/>
 
-            <TextView
-                android:id="@+id/txtInputSex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/msg_input_sex" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtInputSex"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/btnMale"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:onClick="selectSex"
-                    android:text="@string/sex_male" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:onClick="selectSex"
-                    android:text="@string/sex_female" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layoutInputBirthYear"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:visibility="gone" >
+            android:layout_below="@+id/txtInputSex"
+            android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/txtInputBirthYear"
+            <Button
+                android:id="@+id/btnMale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/msg_input_birthyear" />
+                android:layout_weight="50"
+                android:onClick="selectSex"
+                android:text="@string/sex_male" />
 
-            <LinearLayout
-                android:id="@+id/layoutBirthYearBtns"
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtInputBirthYear"
-                android:orientation="vertical" >
+                android:layout_weight="50"
+                android:onClick="selectSex"
+                android:text="@string/sex_female" />
+        </LinearLayout>
+    </RelativeLayout>
 
-                <ListView
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white"
-                    android:divider="#00000000"
-                    android:cacheColorHint="#ffffffff" >
-                </ListView>
-            </LinearLayout>
-        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layoutInputBirthYear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/txtInputBirthYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_input_birthyear" />
+
+        <LinearLayout
+            android:id="@+id/layoutBirthYearBtns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtInputBirthYear"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:cacheColorHint="#ffffffff"
+                android:divider="#00000000" >
+            </ListView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutInputUserProfileKeywords"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/txtInputUserProfileKeywords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_input_user_profile" />
+
+        <LinearLayout
+            android:id="@+id/layoutUserProfileKeywordsBtns"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtInputUserProfileKeywords"
+            android:layout_above="@+id/layoutNext"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listUserProfileKeywords"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:cacheColorHint="#ffffffff"
+                android:divider="#00000000" >
+            </ListView>
+        </LinearLayout>
         
-        <RelativeLayout
-            android:id="@+id/layoutInputUserProfileKeywords"
+        <LinearLayout
+            android:id="@+id/layoutNext" 
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+            <Button android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:onClick="goNext"/>
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layoutWelcomeMsg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:visibility="gone" >
+            android:text="@string/welcome_msg" />
 
-            <TextView
-                android:id="@+id/txtInputUserProfileKeywords"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/msg_input_user_profile" />
-
-            <LinearLayout
-                android:id="@+id/layoutUserProfileKeywordsBtns"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtInputUserProfileKeywords"
-                android:orientation="vertical" >
-
-                <ListView
-                    android:id="@+id/listUserProfileKeywords"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white"
-                    android:divider="#00000000"
-                    android:cacheColorHint="#ffffffff" >
-                </ListView>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

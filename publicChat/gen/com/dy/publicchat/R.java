@@ -24,25 +24,29 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080012;
-        public static final int btnMale=0x7f080003;
-        public static final int btnTempIDLogin=0x7f080000;
-        public static final int btnYear1=0x7f08000c;
-        public static final int btnYear2=0x7f08000d;
-        public static final int btnYear3=0x7f08000e;
-        public static final int chkKeywordLeft=0x7f08000f;
-        public static final int chkKeywordMiddle=0x7f080010;
-        public static final int chkKeywordRight=0x7f080011;
-        public static final int layoutBirthYearBtns=0x7f080006;
-        public static final int layoutInputBirthYear=0x7f080004;
-        public static final int layoutInputSex=0x7f080001;
-        public static final int layoutInputUserProfileKeywords=0x7f080008;
-        public static final int layoutUserProfileKeywordsBtns=0x7f08000a;
-        public static final int list=0x7f080007;
-        public static final int listUserProfileKeywords=0x7f08000b;
-        public static final int txtInputBirthYear=0x7f080005;
-        public static final int txtInputSex=0x7f080002;
-        public static final int txtInputUserProfileKeywords=0x7f080009;
+        public static final int action_settings=0x7f080016;
+        public static final int btnMale=0x7f080005;
+        public static final int btnTempIDLogin=0x7f080001;
+        public static final int btnYear1=0x7f080010;
+        public static final int btnYear2=0x7f080011;
+        public static final int btnYear3=0x7f080012;
+        public static final int chkKeywordLeft=0x7f080013;
+        public static final int chkKeywordMiddle=0x7f080014;
+        public static final int chkKeywordRight=0x7f080015;
+        public static final int layoutBirthYearBtns=0x7f080008;
+        public static final int layoutInputBirthYear=0x7f080006;
+        public static final int layoutInputSex=0x7f080002;
+        public static final int layoutInputUserProfileKeywords=0x7f08000a;
+        public static final int layoutLogin=0x7f080000;
+        public static final int layoutNext=0x7f08000d;
+        public static final int layoutUserProfileKeywordsBtns=0x7f08000c;
+        public static final int layoutWelcomeMsg=0x7f08000f;
+        public static final int list=0x7f080009;
+        public static final int listUserProfileKeywords=0x7f08000e;
+        public static final int txtInputBirthYear=0x7f080007;
+        public static final int txtInputSex=0x7f080004;
+        public static final int txtInputUserProfileKeywords=0x7f08000b;
+        public static final int txtWelcome=0x7f080003;
     }
     public static final class layout {
         public static final int activity_base=0x7f030000;
@@ -66,6 +70,7 @@ public final class R {
         public static final int msg_input_birthyear=0x7f05000c;
         public static final int msg_input_sex=0x7f050009;
         public static final int msg_input_user_profile=0x7f05000d;
+        public static final int next=0x7f05000e;
         public static final int sex_female=0x7f05000b;
         public static final int sex_male=0x7f05000a;
         public static final int temp_id_login=0x7f050005;
