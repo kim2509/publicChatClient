@@ -1,11 +1,19 @@
 package com.dy.publicchat;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.dy.common.Constants;
+import com.dy.common.UserListAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
@@ -40,7 +48,7 @@ public class MainActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		try
 		{
-			showToastMessage( result.toString() );
+			displayUsersAround( result );
 			
 			super.doPostTransaction(requestCode, result);	
 		}
@@ -48,5 +56,28 @@ public class MainActivity extends BaseActivity {
 		{
 			catchException(ex);
 		}
+	}
+	
+	public void displayUsersAround( Object userList ) throws Exception
+	{
+		TextView txtUsersAround = (TextView) findViewById(R.id.txtUsersAround);
+		
+		JSONArray users = new JSONArray( userList.toString() );
+		txtUsersAround.setText( "근처에 " + users.length() + "명의 사용자가 있습니다.");
+		
+		ListView listUsersAround = (ListView) findViewById(R.id.listUsersAround);
+		listUsersAround.setAdapter( new UserListAdapter(this, users ));
+		
+		listUsersAround.setOnItemClickListener( new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 }
