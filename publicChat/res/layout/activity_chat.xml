@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/form"
+        android:layout_alignParentTop="true"
+        android:listSelector="@android:color/transparent" 
+        android:divider="#00000000">
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtInput"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_weight="80"
+            android:inputType="text" />
+        
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="@string/send"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
