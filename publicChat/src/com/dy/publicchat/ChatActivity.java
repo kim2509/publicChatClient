@@ -14,6 +14,7 @@ import com.dy.common.Constants;
 import com.dy.common.DiscussArrayAdapter;
 import com.dy.domain.OneComment;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +39,9 @@ public class ChatActivity extends BaseActivity {
     
     private ArrayList<String> otherUsers;
     
+    private boolean bFetchReady = true;
+    private int lastChatID = 0;
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -55,8 +59,6 @@ public class ChatActivity extends BaseActivity {
 			
 			fetchMessages();
         	
-			addChatFetchTimer();
-			
 			fetchMessageHandler = new Handler(){
 				
 				@Override
@@ -69,7 +71,7 @@ public class ChatActivity extends BaseActivity {
 			            switch (msg.what) {
 			            case 1:
 			                
-			            	
+			            	fetchMessages();
 			            	
 			                break;
 			                 
@@ -94,12 +96,31 @@ public class ChatActivity extends BaseActivity {
 			catchException(ex);
 		}
 	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		removeFetchTimer();
+	}
+		
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		addChatFetchTimer();
+	}
 
 	private void fetchMessages() throws JSONException {
-		JSONObject requestObj = new JSONObject();
-		requestObj.put("userNo", getMetaInfoString("userNo") );
-		requestObj.put("anotherUserNo", otherUsers.get(0));
-		execTransReturningString("/fetchMessage.do", requestObj, Constants.REQUESTCODE_FETCH_MSG, false);
+		if ( bFetchReady )
+		{
+			bFetchReady = false;
+			JSONObject requestObj = new JSONObject();
+			requestObj.put("userNo", getMetaInfoString("userNo") );
+			requestObj.put("anotherUserNo", otherUsers.get(0));
+			requestObj.put("lastChatID", lastChatID );
+			execTransReturningString("/fetchMessage.do", requestObj, Constants.REQUESTCODE_FETCH_MSG, false);	
+		}
 	}
 
 	private void initializeChatListView() {
@@ -165,6 +186,8 @@ public class ChatActivity extends BaseActivity {
 	
 	private void addChatFetchTimer()
 	{
+		if ( tChatFetchTimer != null ) return;
+		
 		tChatFetchTimerTask = new TimerTask() {
             @Override
             public void run() {
@@ -187,9 +210,16 @@ public class ChatActivity extends BaseActivity {
         tChatFetchTimer.schedule(tChatFetchTimerTask, 0, 5000);
 	}
 	
+	private void removeFetchTimer()
+	{
+		if ( tChatFetchTimer == null ) return;
+		tChatFetchTimer.cancel();
+		tChatFetchTimer = null;
+	}
+	
 	@Override
     protected void onDestroy() {
-        tChatFetchTimer.cancel();
+		removeFetchTimer();
         super.onDestroy();
     }
 	
@@ -206,13 +236,25 @@ public class ChatActivity extends BaseActivity {
 				ObjectMapper mapper = new ObjectMapper();
 				ArrayList<OneComment> list = mapper.readValue( result.toString(), new TypeReference<ArrayList<OneComment>>(){});
 				adapter.setChatList(list);
-				
-				fetchMessages();
+				scrollMyListViewToBottom();
+				bFetchReady = true;
 			}
 		}
 		catch( Exception ex )
 		{
 			catchException(ex);
 		}
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+
+	    // Checks whether a hardware keyboard is available
+	    if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+	    	scrollMyListViewToBottom();
+	    } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+	    	scrollMyListViewToBottom();
+	    }
 	}
 }
