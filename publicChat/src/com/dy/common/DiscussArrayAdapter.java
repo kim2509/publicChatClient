@@ -3,6 +3,7 @@ package com.dy.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dy.domain.OneComment;
 import com.dy.publicchat.R;
 import com.dy.publicchat.R.drawable;
 import com.dy.publicchat.R.id;
@@ -59,9 +60,9 @@ public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 		wrapper = (LinearLayout) row.findViewById(R.id.wrapper);
 		OneComment coment = getItem(position);
 		txtChatBubble = (TextView) row.findViewById(R.id.comment);
-		txtChatBubble.setText(coment.comment);
-		txtChatBubble.setBackgroundResource(coment.left ? R.drawable.bubble_yellow : R.drawable.bubble_green);
-		wrapper.setGravity(coment.left ? Gravity.LEFT : Gravity.RIGHT);
+		txtChatBubble.setText(coment.getMsg());
+		txtChatBubble.setBackgroundResource(coment.isLeft() ? R.drawable.bubble_yellow : R.drawable.bubble_green);
+		wrapper.setGravity(coment.isLeft() ? Gravity.LEFT : Gravity.RIGHT);
 
 		return row;
 	}

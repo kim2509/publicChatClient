@@ -38,8 +38,12 @@ public class RegisterAsRandomID extends BaseActivity {
 			
 			JSONObject requestObj = new JSONObject();
 			requestObj.put("userNo", getMetaInfoString("userNo"));
-			requestObj.put("latitude", String.valueOf( location.getLatitude() ) );
-			requestObj.put("longitude", String.valueOf( location.getLongitude() ) );
+			if ( location != null )
+			{
+				requestObj.put("latitude", String.valueOf( location.getLatitude() ) );
+				requestObj.put("longitude", String.valueOf( location.getLongitude() ) );				
+			}
+
 			execTransReturningString("/registerAsRandomID.do", requestObj, Constants.REQUESTCODE_COMMON, false );
 			
 			userProfileKeywords = new ArrayList<JSONObject>();
@@ -114,7 +118,7 @@ public class RegisterAsRandomID extends BaseActivity {
 					}
 					else
 					{
-						showToastMessage("¼­¹ö¿ÍÀÇ Åë½ÅÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.\r\n´Ù½Ã ÇÑ¹ø ½ÃµµÇØ ÁÖ½Ê½Ã¿À.");
+						showToastMessage("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¹Ù¸ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.\r\nï¿½Ù½ï¿½ ï¿½Ñ¹ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½.");
 					}
 				}
 			}
@@ -386,7 +390,7 @@ public class RegisterAsRandomID extends BaseActivity {
 				{
 					boolean bFound = hasUserProfileKeyword( keywordNo );
 					
-					// ¾øÀ¸¸é insert ÇÑ´Ù.
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ insert ï¿½Ñ´ï¿½.
 					if ( bFound == false )
 					{
 						JSONObject obj = new JSONObject();
@@ -413,7 +417,7 @@ public class RegisterAsRandomID extends BaseActivity {
 		
 		try
 		{
-			// ÀÌ¹Ì Ãß°¡Çß´ÂÁö °Ë»ç
+			// ï¿½Ì¹ï¿½ ï¿½ß°ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 			for( int i = 0; i < userProfileKeywords.size(); i++ )
 			{
 				JSONObject obj = userProfileKeywords.get(i);

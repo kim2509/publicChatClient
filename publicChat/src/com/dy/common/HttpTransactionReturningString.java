@@ -9,8 +9,6 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import com.dy.publicchat.BaseActivity;
 
@@ -39,7 +37,7 @@ public class HttpTransactionReturningString extends AsyncTask<Object, Integer, S
 
 		if ( bShowDlg )
 		{
-			this.dialog.setMessage("·ÎµùÁß...");
+			this.dialog.setMessage("ë¡œë”©ì¤‘...");
 			this.dialog.show();	
 		}
 	}
@@ -56,7 +54,7 @@ public class HttpTransactionReturningString extends AsyncTask<Object, Integer, S
 			
 			HttpPost post = new HttpPost( Constants.serverURL + url );
 			StringEntity se = new StringEntity( json.toString(), "UTF-8");
-			se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+			se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json;charset=utf-8"));
 			post.setEntity(se);
 			response = client.execute(post);
 

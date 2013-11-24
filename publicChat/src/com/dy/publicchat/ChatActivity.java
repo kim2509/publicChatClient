@@ -1,12 +1,18 @@
 package com.dy.publicchat;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.dy.common.Constants;
 import com.dy.common.DiscussArrayAdapter;
-import com.dy.common.OneComment;
+import com.dy.domain.OneComment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +36,8 @@ public class ChatActivity extends BaseActivity {
     private Timer tChatFetchTimer;
     Handler fetchMessageHandler;
     
+    private ArrayList<String> otherUsers;
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -38,30 +46,45 @@ public class ChatActivity extends BaseActivity {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_chat);
 			
+			otherUsers = new ArrayList<String>();
+			Object anotherUserNo = getIntent().getExtras().get("anotherUserNo");
+			if ( anotherUserNo != null )
+				otherUsers.add( anotherUserNo.toString() );
+			
 			initializeChatListView();
 			
+			fetchMessages();
+        	
 			addChatFetchTimer();
 			
 			fetchMessageHandler = new Handler(){
 				
 				@Override
 		        public void handleMessage(Message msg) {
-		            super.handleMessage(msg);
-		             
-		            switch (msg.what) {
-		            case 1:
-		                
-		            	execTransReturningString("/fetchMessage.do", msg.obj, Constants.REQUESTCODE_SEND_MSG, false);
-		            	
-		                break;
-		                 
-		            case 2:
-		                
-		                break;
-		 
-		            default:
-		                break;
-		            }
+					
+					try
+					{
+						super.handleMessage(msg);
+			             
+			            switch (msg.what) {
+			            case 1:
+			                
+			            	
+			            	
+			                break;
+			                 
+			            case 2:
+			                
+			                break;
+			 
+			            default:
+			                break;
+			            }	
+					}
+					catch( Exception ex )
+					{
+						catchException(ex);
+					}
 		        }
 				
 			};
@@ -70,6 +93,13 @@ public class ChatActivity extends BaseActivity {
 		{
 			catchException(ex);
 		}
+	}
+
+	private void fetchMessages() throws JSONException {
+		JSONObject requestObj = new JSONObject();
+		requestObj.put("userNo", getMetaInfoString("userNo") );
+		requestObj.put("anotherUserNo", otherUsers.get(0));
+		execTransReturningString("/fetchMessage.do", requestObj, Constants.REQUESTCODE_FETCH_MSG, false);
 	}
 
 	private void initializeChatListView() {
@@ -85,8 +115,9 @@ public class ChatActivity extends BaseActivity {
 				// If the event is a key-down event on the "enter" button
 				if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
 					// Perform action on key press
-					adapter.add(new OneComment(false, edtInput.getText().toString()));
+					adapter.add(new OneComment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
 					edtInput.setText("");
+					scrollMyListViewToBottom();
 					return true;
 				}
 				return false;
@@ -100,10 +131,36 @@ public class ChatActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				adapter.add(new OneComment(false , edtInput.getText().toString()));
-				edtInput.setText("");
+				try
+				{
+					adapter.add(new OneComment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
+					
+					JSONObject requestObj = new JSONObject();
+					requestObj.put("userNo", getMetaInfoString("userNo") );
+					requestObj.put("anotherUserNo", otherUsers.get(0));
+					requestObj.put("msg", edtInput.getText().toString());
+					execTransReturningString("/sendMessage.do", requestObj, Constants.REQUESTCODE_SEND_MSG, false );
+					
+					edtInput.setText("");	
+					scrollMyListViewToBottom();
+				}
+				catch( Exception ex )
+				{
+					
+				}	
 			}
 		});		
+	}
+	
+	private void scrollMyListViewToBottom() {
+		
+	    lv.post(new Runnable() {
+	        @Override
+	        public void run() {
+	            // Select the last row so it will scroll into view...
+	            lv.setSelection(lv.getCount() - 1);
+	        }
+	    });
 	}
 	
 	private void addChatFetchTimer()
@@ -135,4 +192,27 @@ public class ChatActivity extends BaseActivity {
         tChatFetchTimer.cancel();
         super.onDestroy();
     }
+	
+	@Override
+	public void doPostTransaction(int requestCode, Object result) {
+		// TODO Auto-generated method stub
+		try
+		{
+			super.doPostTransaction(requestCode, result);
+			
+			if ( requestCode == Constants.REQUESTCODE_FETCH_MSG )
+			{
+				Log.d("log", result.toString() );
+				ObjectMapper mapper = new ObjectMapper();
+				ArrayList<OneComment> list = mapper.readValue( result.toString(), new TypeReference<ArrayList<OneComment>>(){});
+				adapter.setChatList(list);
+				
+				fetchMessages();
+			}
+		}
+		catch( Exception ex )
+		{
+			catchException(ex);
+		}
+	}
 }

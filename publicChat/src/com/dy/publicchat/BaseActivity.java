@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-import org.json.JSONObject;
-
 import com.dy.common.HttpTransactionReturningString;
 
 import android.location.Address;
@@ -87,7 +85,7 @@ public class BaseActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage( message )
 		       .setCancelable(false)
-		       .setPositiveButton("È®ÀÎ", new DialogInterface.OnClickListener() {
+		       .setPositiveButton("È®ï¿½ï¿½", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		                okClicked( param );
 		           }
@@ -106,12 +104,12 @@ public class BaseActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage( message )
 		       .setCancelable(false)
-		       .setPositiveButton("¿¹", new DialogInterface.OnClickListener() {
+		       .setPositiveButton("ï¿½ï¿½", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		        	   yesClicked( param );
 		           }
 		       })
-		       .setNegativeButton("¾Æ´Ï¿ä", new DialogInterface.OnClickListener() {
+		       .setNegativeButton("ï¿½Æ´Ï¿ï¿½", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		        	   noClicked( param );
 		           }
@@ -180,12 +178,12 @@ public class BaseActivity extends Activity {
 		locationManager = (LocationManager)getSystemService(context);
 		
 		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_COARSE);// Á¤È®µµ
-		criteria.setPowerRequirement(Criteria.POWER_LOW); // Àü¿ø ¼Òºñ·®
-		criteria.setAltitudeRequired(false); // °íµµ »ç¿ë¿©ºÎ
+		criteria.setAccuracy(Criteria.ACCURACY_COARSE);// ï¿½ï¿½È®ï¿½ï¿½
+		criteria.setPowerRequirement(Criteria.POWER_LOW); // ï¿½ï¿½ï¿½ ï¿½Òºï¿½
+		criteria.setAltitudeRequired(false); // ï¿½? ï¿½ï¿½ë¿©ï¿½ï¿½
 		criteria.setBearingRequired(false); //
-		criteria.setSpeedRequired(false); // ¼Óµµ
-		criteria.setCostAllowed(true); // ±ÝÀüÀûºñ¿ë
+		criteria.setSpeedRequired(false); // ï¿½Óµï¿½
+		criteria.setCostAllowed(true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		String provider = locationManager.getBestProvider(criteria, true);
 		return locationManager.getLastKnownLocation(provider);
@@ -195,8 +193,8 @@ public class BaseActivity extends Activity {
 	{
 		if ( location == null ) return "";
 		
-		double latitude = location.getLatitude(); // À§µµ
-		double longitude = location.getLongitude(); // °æµµ
+		double latitude = location.getLatitude(); // ï¿½ï¿½ï¿½ï¿½
+		double longitude = location.getLongitude(); // ï¿½æµµ
 		
 		Geocoder gcK = new Geocoder(getApplicationContext(),Locale.KOREA);
 		

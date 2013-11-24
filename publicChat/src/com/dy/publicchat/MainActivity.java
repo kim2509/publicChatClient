@@ -48,7 +48,8 @@ public class MainActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		try
 		{
-			displayUsersAround( result );
+			if ( requestCode == Constants.REQUESTCODE_SAVE_USER_PROFILE_KEYWORDS )
+				displayUsersAround( result );
 			
 			super.doPostTransaction(requestCode, result);	
 		}
@@ -63,7 +64,7 @@ public class MainActivity extends BaseActivity {
 		TextView txtUsersAround = (TextView) findViewById(R.id.txtUsersAround);
 		
 		JSONArray users = new JSONArray( userList.toString() );
-		txtUsersAround.setText( "±ÙÃ³¿¡ " + users.length() + "¸íÀÇ »ç¿ëÀÚ°¡ ÀÖ½À´Ï´Ù.");
+		txtUsersAround.setText( "ê·¼ì²˜ì— " + users.length() + "ëª…ì˜ ì‚¬ìš©ìê°€ ìˆìŠµë‹ˆë‹¤.");
 		
 		ListView listUsersAround = (ListView) findViewById(R.id.listUsersAround);
 		listUsersAround.setAdapter( new UserListAdapter(this, users ));
@@ -71,12 +72,21 @@ public class MainActivity extends BaseActivity {
 		listUsersAround.setOnItemClickListener( new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View v, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-				startActivity(intent);
-				finish();
+				try
+				{
+					Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+					
+					TextView tv = (TextView) v.findViewById(R.id.txtUserNo);
+					intent.putExtra("anotherUserNo", tv.getText().toString());
+					startActivity(intent);
+				}
+				catch( Exception ex )
+				{
+					catchException(ex);
+				}
 			}
 		});
 	}
