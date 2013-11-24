@@ -6,6 +6,7 @@ public class OneComment {
 	private String sender;
 	private String createDate;
 	private long roomID;
+	private int chatID;
 
 	public OneComment() {
 	}
@@ -54,5 +55,13 @@ public class OneComment {
 
 	public void setRoomID(long roomID) {
 		this.roomID = roomID;
+	}
+
+	public int getChatID() {
+		return chatID;
+	}
+
+	public void setChatID(int chatID) {
+		this.chatID = chatID;
 	}
 }

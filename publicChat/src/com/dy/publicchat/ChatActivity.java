@@ -235,8 +235,23 @@ public class ChatActivity extends BaseActivity {
 				Log.d("log", result.toString() );
 				ObjectMapper mapper = new ObjectMapper();
 				ArrayList<OneComment> list = mapper.readValue( result.toString(), new TypeReference<ArrayList<OneComment>>(){});
-				adapter.setChatList(list);
-				scrollMyListViewToBottom();
+				
+				if ( list.size() > 0 )
+				{
+					for ( int i = 0; i < list.size(); i++ )
+					{
+						OneComment comment = list.get(i);
+						if ( comment.getSender().equals( getMetaInfoString("userNo")) ) comment.setLeft(false);
+						else
+							comment.setLeft(true);
+						adapter.add( comment );	
+					}
+					
+					lastChatID = list.get(list.size() - 1 ).getChatID();
+					
+					scrollMyListViewToBottom();	
+				}
+				
 				bFetchReady = true;
 			}
 		}
