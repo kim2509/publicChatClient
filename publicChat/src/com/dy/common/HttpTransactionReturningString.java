@@ -18,28 +18,19 @@ import android.util.Log;
 
 public class HttpTransactionReturningString extends AsyncTask<Object, Integer, String> {
 
-	private ProgressDialog dialog = null;
 	private String url = "";
-	private BaseActivity activity;
-	private boolean bShowDlg = true;
 	int requestCode = 0;
-
-	public HttpTransactionReturningString( BaseActivity activity, String url, int requestCode, boolean bModal )
+	private TransactionDelegate delegate;
+	
+	public HttpTransactionReturningString( TransactionDelegate delegate, String url, int requestCode )
 	{
-		this.activity = activity;
-		dialog = new ProgressDialog( activity );
+		this.delegate = delegate;
 		this.url = url;
-		this.bShowDlg = bModal;
 		this.requestCode = requestCode;
 	}
 
 	protected void onPreExecute() {
 
-		if ( bShowDlg )
-		{
-			this.dialog.setMessage("로딩중...");
-			this.dialog.show();	
-		}
 	}
 
 	protected String doInBackground( Object... data ) {
@@ -80,10 +71,8 @@ public class HttpTransactionReturningString extends AsyncTask<Object, Integer, S
 
 	protected void onPostExecute(String result) {
 
-		if (dialog.isShowing())
-			dialog.dismiss();
-
-		activity.doPostTransaction( requestCode, result );
+		delegate.doPostTransaction( requestCode, result );
+		
 	}
 
 	public void writeLog( String log )

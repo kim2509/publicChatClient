@@ -44,7 +44,7 @@ public class RegisterAsRandomID extends BaseActivity {
 				requestObj.put("longitude", String.valueOf( location.getLongitude() ) );				
 			}
 
-			execTransReturningString("/registerAsRandomID.do", requestObj, Constants.REQUESTCODE_COMMON, false );
+			execTransReturningString("/registerAsRandomID.do", requestObj, Constants.REQUESTCODE_COMMON );
 			
 			userProfileKeywords = new ArrayList<JSONObject>();
 		}
@@ -144,7 +144,7 @@ public class RegisterAsRandomID extends BaseActivity {
 			else
 				requestObj.put("sex", 2);
 			
-			execTransReturningString("/saveUserSex.do", requestObj, Constants.REQUESTCODE_SAVE_SEX, false );
+			execTransReturningString("/saveUserSex.do", requestObj, Constants.REQUESTCODE_SAVE_SEX );
 		}
 		catch( Exception ex )
 		{
@@ -162,7 +162,7 @@ public class RegisterAsRandomID extends BaseActivity {
 			requestObj.put("userNo", getMetaInfoString("userNo"));
 			requestObj.put("birthYear", btn.getText().toString());
 			
-			execTransReturningString("/saveBirthYearAndGetUserProfileKeywords.do", requestObj, Constants.REQUESTCODE_SAVE_BIRTHYEAR, false );
+			execTransReturningString("/saveBirthYearAndGetUserProfileKeywords.do", requestObj, Constants.REQUESTCODE_SAVE_BIRTHYEAR );
 		}
 		catch( Exception ex )
 		{
@@ -454,7 +454,7 @@ public class RegisterAsRandomID extends BaseActivity {
 		try
 		{
 			JSONArray requestObj = new JSONArray( userProfileKeywords );
-			execTransReturningString("/saveUserKeywords.do", requestObj, Constants.REQUESTCODE_SAVE_USER_PROFILE_KEYWORDS, false );
+			execTransReturningString("/saveUserKeywords.do", requestObj, Constants.REQUESTCODE_SAVE_USER_PROFILE_KEYWORDS );
 		}
 		catch( Exception ex )
 		{

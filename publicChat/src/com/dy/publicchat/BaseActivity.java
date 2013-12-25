@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.dy.common.HttpTransactionReturningString;
+import com.dy.common.TransactionDelegate;
 
 import android.location.Address;
 import android.location.Criteria;
@@ -15,7 +17,6 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,10 +25,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.Toast;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends SherlockFragmentActivity implements TransactionDelegate{
 
 	LocationManager locationManager;
 	Location location;
@@ -37,13 +37,6 @@ public class BaseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		location = getCurrentGPSLocation();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.base, menu);
-		return true;
 	}
 
 	public String getOSVersion()
@@ -157,9 +150,9 @@ public class BaseActivity extends Activity {
 		Log.i("publicChat", log );
 	}
 	
-	public void execTransReturningString( String url, Object request, int requestCode, boolean bModal )
+	public void execTransReturningString( String url, Object request, int requestCode )
 	{
-		new HttpTransactionReturningString( this, url, requestCode,  bModal ).execute( request );
+		new HttpTransactionReturningString( this, url, requestCode ).execute( request );
 	}
 	
 	public void doPostTransaction( int requestCode, Object result )

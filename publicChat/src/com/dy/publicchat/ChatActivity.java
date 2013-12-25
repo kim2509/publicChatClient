@@ -119,7 +119,7 @@ public class ChatActivity extends BaseActivity {
 			requestObj.put("userNo", getMetaInfoString("userNo") );
 			requestObj.put("anotherUserNo", otherUsers.get(0));
 			requestObj.put("lastChatID", lastChatID );
-			execTransReturningString("/fetchMessage.do", requestObj, Constants.REQUESTCODE_FETCH_MSG, false);	
+			execTransReturningString("/fetchMessage.do", requestObj, Constants.REQUESTCODE_FETCH_MSG );	
 		}
 	}
 
@@ -160,7 +160,7 @@ public class ChatActivity extends BaseActivity {
 					requestObj.put("userNo", getMetaInfoString("userNo") );
 					requestObj.put("anotherUserNo", otherUsers.get(0));
 					requestObj.put("msg", edtInput.getText().toString());
-					execTransReturningString("/sendMessage.do", requestObj, Constants.REQUESTCODE_SEND_MSG, false );
+					execTransReturningString("/sendMessage.do", requestObj, Constants.REQUESTCODE_SEND_MSG );
 					
 					edtInput.setText("");	
 					scrollMyListViewToBottom();

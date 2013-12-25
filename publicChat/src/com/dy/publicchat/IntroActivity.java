@@ -38,13 +38,6 @@ public class IntroActivity extends BaseActivity {
 			catchException(ex);
 		}
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.intro, menu);
-		return true;
-	}
 	
 	public void tempIDLogin_Clicked( View v )
 	{

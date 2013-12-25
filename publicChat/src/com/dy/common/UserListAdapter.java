@@ -59,7 +59,9 @@ public class UserListAdapter extends BaseAdapter {
     		TextView txtUserNo = (TextView)vi.findViewById(R.id.txtUserNo);
     		txtUserNo.setText( obj.getString("userNo") );
     		TextView txtDistance = (TextView)vi.findViewById(R.id.txtDistance);
-    		txtDistance.setText( obj.getString("distance") + " km" );
+    		
+    		if ( obj.has("distance") )
+    			txtDistance.setText( obj.getString("distance") + " km" );
     		
             return vi;	
     	}
