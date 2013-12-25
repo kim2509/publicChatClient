@@ -2,7 +2,7 @@ package com.dy.common;
 
 public class Constants {
 
-	public static boolean bReal = false;
+	public static boolean bReal = true;
 	public static String serverURL = bReal ? "http://www.hanintownsg.com/randomMsgServer" : "http://192.168.10.105:8080/randomMsgServer";
 	
 	public final static String SUCCESS = "0000";

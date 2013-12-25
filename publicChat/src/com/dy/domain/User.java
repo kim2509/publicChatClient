@@ -22,6 +22,8 @@ public class User {
 	
 	private String longitude;
 	
+	private String distance;
+	
 	public User()
 	{
 		
@@ -110,6 +112,14 @@ public class User {
 
 	public void setBirthYear(int birthYear) {
 		this.birthYear = birthYear;
+	}
+
+	public String getDistance() {
+		return distance;
+	}
+
+	public void setDistance(String distance) {
+		this.distance = distance;
 	}
 
 	
