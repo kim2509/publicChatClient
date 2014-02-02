@@ -1,7 +1,5 @@
 package com.dy.publicchat;
 
-import com.actionbarsherlock.view.Window;
-
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.widget.TabHost;
@@ -16,12 +14,8 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		try
 		{
-			requestWindowFeature(Window.FEATURE_NO_TITLE);
-			
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_main);
-			setTheme(R.style.Theme_Sherlock_Light);
-
 			
 			mTabHost = (TabHost)findViewById(android.R.id.tabhost);
 			mTabHost.setup();
@@ -34,16 +28,16 @@ public class MainActivity extends BaseActivity {
 			args.putDouble("latitude", location.getLatitude());
 			args.putDouble("longitude", location.getLongitude());
 			
-			mTabsAdapter.addTab(mTabHost.newTabSpec("Users").setIndicator("Users"),
-					UsersAroundFragment.class, args );
+			mTabsAdapter.addTab(mTabHost.newTabSpec("홈").setIndicator("홈"),
+					HomeFragment.class, args );
 			
-			mTabsAdapter.addTab(mTabHost.newTabSpec("chat").setIndicator("chat"),
+			mTabsAdapter.addTab(mTabHost.newTabSpec("채팅").setIndicator("채팅"),
 					ChatListFragment.class, args);
 			
-			mTabsAdapter.addTab(mTabHost.newTabSpec("cafe").setIndicator("cafe"),
+			mTabsAdapter.addTab(mTabHost.newTabSpec("친구").setIndicator("친구"),
 					CafeListFragment.class, args);
 			
-			mTabsAdapter.addTab(mTabHost.newTabSpec("more").setIndicator("more"),
+			mTabsAdapter.addTab(mTabHost.newTabSpec("더보기").setIndicator("더보기"),
 					MoreListFragment.class, args);
 			
 			if (savedInstanceState != null) {

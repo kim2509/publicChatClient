@@ -954,17 +954,20 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040013;
         public static final int abs__title=0x7f04001b;
         public static final int abs__up=0x7f04000b;
-        public static final int action_settings=0x7f040053;
+        public static final int action_settings=0x7f04005b;
+        public static final int btnCreateRoom=0x7f040048;
         public static final int btnMale=0x7f04003c;
+        public static final int btnQuickChat=0x7f040047;
+        public static final int btnRandomMsg=0x7f040049;
         public static final int btnSend=0x7f040035;
         public static final int btnTempIDLogin=0x7f040037;
-        public static final int btnYear1=0x7f040047;
-        public static final int btnYear2=0x7f040048;
-        public static final int btnYear3=0x7f040049;
-        public static final int chkKeywordLeft=0x7f04004e;
-        public static final int chkKeywordMiddle=0x7f04004f;
-        public static final int chkKeywordRight=0x7f040050;
-        public static final int comment=0x7f040052;
+        public static final int btnYear1=0x7f04004f;
+        public static final int btnYear2=0x7f040050;
+        public static final int btnYear3=0x7f040051;
+        public static final int chkKeywordLeft=0x7f040056;
+        public static final int chkKeywordMiddle=0x7f040057;
+        public static final int chkKeywordRight=0x7f040058;
+        public static final int comment=0x7f04005a;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f040026;
         public static final int edtInput=0x7f040034;
@@ -979,7 +982,12 @@ containing a value of this type.
         public static final int layoutUserProfileKeywordsBtns=0x7f040043;
         public static final int layoutWelcomeMsg=0x7f040046;
         public static final int list=0x7f040040;
+        public static final int listChatRooms=0x7f04004a;
+        public static final int listHobbies=0x7f04004d;
+        public static final int listHometown=0x7f04004b;
+        public static final int listMarriage=0x7f04004e;
         public static final int listMode=0x7f040002;
+        public static final int listSingles=0x7f04004c;
         public static final int listUserProfileKeywords=0x7f040045;
         public static final int listView1=0x7f040032;
         public static final int normal=0x7f040001;
@@ -988,17 +996,17 @@ containing a value of this type.
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int txtDate=0x7f04004b;
-        public static final int txtDistance=0x7f04004d;
+        public static final int txtDate=0x7f040053;
+        public static final int txtDistance=0x7f040055;
         public static final int txtInputBirthYear=0x7f04003e;
         public static final int txtInputSex=0x7f04003b;
         public static final int txtInputUserProfileKeywords=0x7f040042;
-        public static final int txtMsg=0x7f04004c;
-        public static final int txtUserNo=0x7f04004a;
+        public static final int txtMsg=0x7f040054;
+        public static final int txtUserNo=0x7f040052;
         public static final int txtWelcome=0x7f04003a;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
-        public static final int wrapper=0x7f040051;
+        public static final int wrapper=0x7f040059;
     }
     public static final class integer {
         public static final int abs__max_action_buttons=0x7f080000;
@@ -1030,13 +1038,14 @@ containing a value of this type.
         public static final int activity_intro=0x7f030017;
         public static final int activity_main=0x7f030018;
         public static final int activity_register_as_random_id=0x7f030019;
-        public static final int list_item_birthyear=0x7f03001a;
-        public static final int list_item_chat=0x7f03001b;
-        public static final int list_item_user=0x7f03001c;
-        public static final int list_item_user_profile=0x7f03001d;
-        public static final int listitem_discuss=0x7f03001e;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001f;
-        public static final int sherlock_spinner_item=0x7f030020;
+        public static final int fragment_home=0x7f03001a;
+        public static final int list_item_birthyear=0x7f03001b;
+        public static final int list_item_chat=0x7f03001c;
+        public static final int list_item_user=0x7f03001d;
+        public static final int list_item_user_profile=0x7f03001e;
+        public static final int listitem_discuss=0x7f03001f;
+        public static final int sherlock_spinner_dropdown_item=0x7f030020;
+        public static final int sherlock_spinner_item=0x7f030021;
     }
     public static final class menu {
         public static final int base=0x7f0b0000;
