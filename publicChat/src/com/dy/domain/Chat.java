@@ -41,5 +41,4 @@ public class Chat {
 	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
-	
 }
