@@ -6,6 +6,10 @@ public class ChatRoom {
 
 	private String title = "";
 
+	private int numOfUsers = 0;
+	
+	private int maxNumOfUsers = 0;
+	
 	public int getROOM_ID() {
 		return ROOM_ID;
 	}
@@ -20,6 +24,22 @@ public class ChatRoom {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public int getNumOfUsers() {
+		return numOfUsers;
+	}
+
+	public void setNumOfUsers(int numOfUsers) {
+		this.numOfUsers = numOfUsers;
+	}
+
+	public int getMaxNumOfUsers() {
+		return maxNumOfUsers;
+	}
+
+	public void setMaxNumOfUsers(int maxNumOfUsers) {
+		this.maxNumOfUsers = maxNumOfUsers;
 	}
 	
 }

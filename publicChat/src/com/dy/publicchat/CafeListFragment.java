@@ -37,7 +37,7 @@ public class CafeListFragment extends BaseListFragment implements TransactionDel
 			requestObj.put("userNo", getMetaInfoString("userNo") );
 			requestObj.put("latitude", args.getDouble("latitude"));
 			requestObj.put("longitude", args.getDouble("longitude"));
-			new HttpTransactionReturningString( this, "/mainInfo.do", 1 ).execute( requestObj );
+			//new HttpTransactionReturningString( this, "/mainInfo.do", 1 ).execute( requestObj );
 		}
 		catch( Exception ex )
 		{
