@@ -1,56 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content" >
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
-        
-        <Button android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/btnQuickChat"
-            android:text="빠른채팅"
-            />
-        
-        <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="방만들기"
-            android:id="@+id/btnCreateRoom"
-            android:layout_weight="1"
-            />
-        
-        <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="랜덤쪽지"
-            android:id="@+id/btnRandomMsg"
-            android:layout_weight="1"
-            />
-        
+            android:layout_marginBottom="10dp" >
+
+            <Button
+                android:id="@+id/btnQuickChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="빠른채팅" />
+
+            <Button
+                android:id="@+id/btnCreateRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="방만들기" />
+
+            <Button
+                android:id="@+id/btnRandomMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="랜덤쪽지" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="채팅방 목록"/>
+            
+            <ListView
+                android:id="@+id/listChatRooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp" 
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="추천 대화 상대"/>
+            
+            <ListView
+                android:id="@+id/listHometown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            
+        </LinearLayout>
+
+        <!--
+        <ListView
+            android:id="@+id/listSingles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ListView
+            android:id="@+id/listHobbies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ListView
+            android:id="@+id/listMarriage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /-->
+            
     </LinearLayout>
-    
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listChatRooms"/>
-    
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listHometown"/>
-    
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listSingles"/>
-    
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listHobbies"/>
-    
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listMarriage"/>
-        
 
-</LinearLayout>
+</ScrollView>

@@ -16,16 +16,54 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/txtDate"
+        android:id="@+id/txtNumOfUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
     <TextView
-        android:id="@+id/txtMsg"
+        android:id="@+id/txtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@+id/txtTitle"
+        android:layout_below="@+id/txtTitle"
+        android:layout_marginTop="5dp"
+        android:text="서울시 구로구"
         android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtNumOfUsers" >
+
+        <TextView
+            android:id="@+id/txtKeyword1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:textColor="#3333ff"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtKeyword2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:textColor="#3333ff"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtKeyword3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:textColor="#3333ff"
+            android:textSize="10sp" />
+    </LinearLayout>
 
 </RelativeLayout>
