@@ -1,2 +1,5 @@
 publicChat/bin/*
 publicChat/gen/*
+publicChat/bin/classes/com/dy/publicchat/BaseActivity.class
+publicChat/bin/classes/com/dy/publicchat/MainActivity.class
+publicChat/bin/classes/com/dy/publicchat/RegisterAsRandomID.class
