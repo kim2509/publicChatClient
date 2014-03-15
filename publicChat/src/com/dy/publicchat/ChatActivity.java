@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 import com.dy.common.Constants;
 import com.dy.common.DiscussArrayAdapter;
-import com.dy.domain.OneComment;
+import com.dy.domain.Comment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -136,7 +136,7 @@ public class ChatActivity extends BaseActivity {
 				// If the event is a key-down event on the "enter" button
 				if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
 					// Perform action on key press
-					adapter.add(new OneComment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
+					adapter.add(new Comment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
 					edtInput.setText("");
 					scrollMyListViewToBottom();
 					return true;
@@ -154,7 +154,7 @@ public class ChatActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				try
 				{
-					adapter.add(new OneComment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
+					adapter.add(new Comment(false ,getMetaInfoString("userNo"), edtInput.getText().toString(), "" ));
 					
 					JSONObject requestObj = new JSONObject();
 					requestObj.put("userNo", getMetaInfoString("userNo") );
@@ -234,13 +234,13 @@ public class ChatActivity extends BaseActivity {
 			{
 				Log.d("log", result.toString() );
 				ObjectMapper mapper = new ObjectMapper();
-				ArrayList<OneComment> list = mapper.readValue( result.toString(), new TypeReference<ArrayList<OneComment>>(){});
+				ArrayList<Comment> list = mapper.readValue( result.toString(), new TypeReference<ArrayList<Comment>>(){});
 				
 				if ( list.size() > 0 )
 				{
 					for ( int i = 0; i < list.size(); i++ )
 					{
-						OneComment comment = list.get(i);
+						Comment comment = list.get(i);
 						if ( comment.getSender().equals( getMetaInfoString("userNo")) ) comment.setLeft(false);
 						else
 							comment.setLeft(true);

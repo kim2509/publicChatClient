@@ -3,7 +3,7 @@ package com.dy.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dy.domain.OneComment;
+import com.dy.domain.Comment;
 import com.dy.publicchat.R;
 import com.dy.publicchat.R.drawable;
 import com.dy.publicchat.R.id;
@@ -20,14 +20,14 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
+public class DiscussArrayAdapter extends ArrayAdapter<Comment> {
 
 	private TextView txtChatBubble;
-	private List<OneComment> chatList = new ArrayList<OneComment>();
+	private List<Comment> chatList = new ArrayList<Comment>();
 	private LinearLayout wrapper;
 
 	@Override
-	public void add(OneComment object) {
+	public void add(Comment object) {
 		chatList.add(object);
 		super.add(object);
 	}
@@ -40,11 +40,11 @@ public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 		return this.chatList.size();
 	}
 
-	public OneComment getItem(int index) {
+	public Comment getItem(int index) {
 		return this.chatList.get(index);
 	}
 	
-	public void setChatList( ArrayList<OneComment> chatList )
+	public void setChatList( ArrayList<Comment> chatList )
 	{
 		this.chatList = chatList;
 		notifyDataSetChanged();
@@ -58,7 +58,7 @@ public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 		}
 
 		wrapper = (LinearLayout) row.findViewById(R.id.wrapper);
-		OneComment coment = getItem(position);
+		Comment coment = getItem(position);
 		txtChatBubble = (TextView) row.findViewById(R.id.comment);
 		txtChatBubble.setText(coment.getMsg());
 		txtChatBubble.setBackgroundResource(coment.isLeft() ? R.drawable.bubble_yellow : R.drawable.bubble_green);
