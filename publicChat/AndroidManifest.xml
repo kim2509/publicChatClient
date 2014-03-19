@@ -57,6 +57,11 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_chat" >
         </activity>
+        <activity
+            android:name="com.dy.publicchat.UserProfileActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:label="@string/title_activity_base" >
+        </activity>
     </application>
 
 </manifest>
