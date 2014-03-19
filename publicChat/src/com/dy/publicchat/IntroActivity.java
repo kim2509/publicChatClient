@@ -32,8 +32,9 @@ public class IntroActivity extends BaseActivity {
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						final Intent mainIntent = new Intent(IntroActivity.this, UserProfileActivity.class);
-						startActivity(mainIntent);
+						final Intent intent = new Intent(IntroActivity.this, UserProfileActivity.class);
+						intent.putExtra("callMain", true);
+						startActivity(intent);
 						finish();
 					}
 				}, 1000);	

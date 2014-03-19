@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class UserProfileActivity extends BaseActivity{
 	
 	ImageLoaderConfiguration config = null;
 	ImageLoader imageLoader = null;
+	boolean callMain = false;
 	
 	int index = 0;
 	
@@ -30,6 +32,8 @@ public class UserProfileActivity extends BaseActivity{
 		{
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_user_profile);
+			
+			callMain = getIntent().getExtras().getBoolean("callMain");
 			
 			config = new ImageLoaderConfiguration.Builder(this).build();
 			imageLoader = ImageLoader.getInstance();
@@ -53,9 +57,8 @@ public class UserProfileActivity extends BaseActivity{
 			    @Override
 			    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 			        // Do whatever you want with Bitmap
-			    	RelativeLayout layoutIntro = (RelativeLayout) findViewById(R.id.layoutUserProfile);
-			    	Drawable dr = new BitmapDrawable(loadedImage);
-			    	layoutIntro.setBackgroundDrawable( dr );   	
+			    	ImageView imgUserPhoto = (ImageView) findViewById(R.id.imgUserPhoto);
+			    	imgUserPhoto.setImageBitmap(loadedImage);
 			    	TextView txtUserName = (TextView) findViewById(R.id.txtUserName);
 			    	txtUserName.setText( userNames[index++]);
 			    }
@@ -76,9 +79,8 @@ public class UserProfileActivity extends BaseActivity{
 		    @Override
 		    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 		        // Do whatever you want with Bitmap
-		    	RelativeLayout layoutIntro = (RelativeLayout) findViewById(R.id.layoutUserProfile);
-		    	Drawable dr = new BitmapDrawable(loadedImage);
-		    	layoutIntro.setBackgroundDrawable( dr );
+		    	ImageView imgUserPhoto = (ImageView) findViewById(R.id.imgUserPhoto);
+		    	imgUserPhoto.setImageBitmap(loadedImage);
 		    	TextView txtUserName = (TextView) findViewById(R.id.txtUserName);
 		    	txtUserName.setText( userNames[index++]);
 		    }
@@ -89,8 +91,12 @@ public class UserProfileActivity extends BaseActivity{
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	        // your code
-	    	Intent mainIntent = new Intent(this, MainActivity.class);
-			startActivity(mainIntent);
+	    	if ( callMain )
+	    	{
+	    		Intent mainIntent = new Intent(this, MainActivity.class);
+				startActivity(mainIntent);	
+	    	}
+	    	
 			finish();
 			
 	        return true;

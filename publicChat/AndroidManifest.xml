@@ -59,8 +59,7 @@
         </activity>
         <activity
             android:name="com.dy.publicchat.UserProfileActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/title_activity_base" >
+            android:label="@string/user_profile_title" >
         </activity>
     </application>
 

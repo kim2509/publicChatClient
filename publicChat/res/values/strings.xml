@@ -18,5 +18,6 @@
     <string name="next">다음</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="send">전송</string>
+    <string name="user_profile_title">호감가나요?</string>
 
 </resources>

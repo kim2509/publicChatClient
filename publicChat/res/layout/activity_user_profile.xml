@@ -3,16 +3,25 @@
     android:id="@+id/layoutUserProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:orientation="vertical" >
 
+    <ImageView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_above="@+id/layoutProfileList"
+        android:id="@+id/imgUserPhoto"
+        android:scaleType="fitXY"/>
+    
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/layoutBtns"
+        android:id="@+id/layoutProfileList"
         android:padding="10dp">
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtUserName"
-            android:text="윤여정"/>
+            android:textColor="@android:color/white" />
     </LinearLayout>
     
     <LinearLayout
@@ -20,7 +29,7 @@
         android:layout_height="wrap_content" 
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/layoutBtns"
         >
 
@@ -28,8 +37,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="매력있어요."
+            android:textColor="@android:color/white"
             android:onClick="showNext"
+            android:text="매력있어요"
             android:textSize="12sp" />
 
         <Button
@@ -37,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="보통"
+            android:textColor="@android:color/white"
             android:onClick="showNext"
             android:textSize="12sp" />
 
@@ -45,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="별루에요."
+            android:textColor="@android:color/white"
             android:onClick="showNext"
             android:textSize="12sp" />
         
