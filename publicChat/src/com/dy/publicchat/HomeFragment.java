@@ -8,6 +8,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 import com.dy.domain.Chat;
 import com.dy.domain.ChatRoom;
+import com.dy.domain.HomeListItem;
 import com.dy.domain.Keyword;
 import com.dy.domain.User;
 
@@ -33,11 +34,11 @@ public class HomeFragment extends BaseFragment{
 
 			ListView listChatRooms = (ListView) getActivity().findViewById(R.id.listChatRooms);
 			
-			ChatRoomListAdapter roomListAdapter = new ChatRoomListAdapter( getActivity() );
+			HomeListAdapter roomListAdapter = new HomeListAdapter( getActivity() );
 			
 			String roomListResult = getChatRoomList();
 			ObjectMapper mapper = new ObjectMapper();
-			List<ChatRoom> data = mapper.readValue(roomListResult, new TypeReference<List<ChatRoom>>(){});
+			List<HomeListItem> data = mapper.readValue(roomListResult, new TypeReference<List<ChatRoom>>(){});
 			
 			roomListAdapter.setData(data);
 			listChatRooms.setAdapter( roomListAdapter );
