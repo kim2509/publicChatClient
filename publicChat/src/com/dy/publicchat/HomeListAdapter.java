@@ -42,6 +42,19 @@ public class HomeListAdapter extends ArrayAdapter<HomeListItem> {
     }
 	
 	@Override
+	public boolean isEnabled(int position) {
+		// TODO Auto-generated method stub
+		
+		HomeListItem item = getItem(position);
+		if ( item instanceof HomeListItemDesc1 || item instanceof HomeListItemDesc2 )
+		{
+			return false;
+		}
+		
+		return super.isEnabled(position);
+	}
+	
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		View view = null;
