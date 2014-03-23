@@ -32,7 +32,7 @@ public class HomeFragment extends BaseFragment{
 			// TODO Auto-generated method stub
 			super.onActivityCreated(savedInstanceState);
 
-			ListView listChatRooms = (ListView) getActivity().findViewById(R.id.listChatRooms);
+			ListView listHome = (ListView) getActivity().findViewById(R.id.listHome);
 			
 			HomeListAdapter roomListAdapter = new HomeListAdapter( getActivity() );
 			
@@ -41,10 +41,8 @@ public class HomeFragment extends BaseFragment{
 			List<HomeListItem> data = mapper.readValue(roomListResult, new TypeReference<List<ChatRoom>>(){});
 			
 			roomListAdapter.setData(data);
-			listChatRooms.setAdapter( roomListAdapter );
-			roomListAdapter.notifyDataSetChanged();
-			LayoutParams param = listChatRooms.getLayoutParams();
-			param.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+			listHome.setAdapter( roomListAdapter );
+			
 		}
 		catch( Exception ex )
 		{
@@ -221,15 +219,15 @@ public class HomeFragment extends BaseFragment{
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_home, container, false);
 		                      
-		Button btnQuickChat = (Button) v.findViewById(R.id.btnQuickChat);
-		btnQuickChat.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				showToastMessage("quick");
-			}
-		});
+//		Button btnQuickChat = (Button) v.findViewById(R.id.btnQuickChat);
+//		btnQuickChat.setOnClickListener( new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				showToastMessage("quick");
+//			}
+//		});
 		
 		return v;
 	}
