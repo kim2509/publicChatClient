@@ -24,9 +24,15 @@ public class User {
 	
 	private String distance;
 	
+	private String profileImageUrl;
+	
 	public User()
 	{
-		
+	}
+	
+	public User( String profImageUrl )
+	{
+		setProfileImageUrl(profImageUrl);
 	}
 	
 	public User( long userNo )
@@ -120,6 +126,14 @@ public class User {
 
 	public void setDistance(String distance) {
 		this.distance = distance;
+	}
+
+	public String getProfileImageUrl() {
+		return profileImageUrl;
+	}
+
+	public void setProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
 	}
 
 	

@@ -9,6 +9,8 @@ import com.dy.domain.HomeListItemBtns;
 import com.dy.domain.HomeListItemDesc1;
 import com.dy.domain.HomeListItemDesc2;
 import com.dy.domain.Keyword;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,11 +27,16 @@ public class HomeListAdapter extends ArrayAdapter<HomeListItem> {
 	public static final String BTNS = "btns";
 	public static final String DESC1 = "desc1";
 	public static final String DESC2 = "desc2";
+	ImageLoader imageLoader = null;
 	
 	public HomeListAdapter(Context context)
 	{
 		super(context, android.R.layout.simple_list_item_2);
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder( context ).build();
+        imageLoader = ImageLoader.getInstance();
+		imageLoader.init(config);
 	}
 	
 	public void setData(List<HomeListItem> data) {
@@ -45,13 +52,15 @@ public class HomeListAdapter extends ArrayAdapter<HomeListItem> {
 	public boolean isEnabled(int position) {
 		// TODO Auto-generated method stub
 		
-		HomeListItem item = getItem(position);
-		if ( item instanceof HomeListItemDesc1 || item instanceof HomeListItemDesc2 )
-		{
-			return false;
-		}
+//		HomeListItem item = getItem(position);
+//		if ( item instanceof HomeListItemDesc1 || item instanceof HomeListItemDesc2 )
+//		{
+//			return false;
+//		}
+//		
+//		return super.isEnabled(position);
 		
-		return super.isEnabled(position);
+		return false;
 	}
 	
 	@Override
@@ -97,7 +106,7 @@ public class HomeListAdapter extends ArrayAdapter<HomeListItem> {
 			else view = convertView;
 		}
 		
-		item.setViewData(view);
+		item.setViewData(view, imageLoader);
 		
 		return view;
 	}

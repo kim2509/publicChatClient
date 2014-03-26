@@ -15,7 +15,9 @@ import com.dy.domain.HomeListItemDesc2;
 import com.dy.domain.Keyword;
 import com.dy.domain.User;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.Button;
 
 public class HomeFragment extends BaseFragment{
 
+	HomeListAdapter homeListAdapter = null;
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		
@@ -37,24 +40,23 @@ public class HomeFragment extends BaseFragment{
 
 			ListView listHome = (ListView) getActivity().findViewById(R.id.listHome);
 			
-			HomeListAdapter homeListAdapter = new HomeListAdapter( getActivity() );
+			homeListAdapter = new HomeListAdapter( getActivity() );
 			
 			String roomListResult = getChatRoomList();
 			ObjectMapper mapper = new ObjectMapper();
 			ArrayList<HomeListItem> data = new ArrayList<HomeListItem>();
+			
+			data.add( new HomeListItemBtns() );
 			
 			data.add( new HomeListItemDesc1() );
 			
 			List<HomeListItem> roomList = mapper.readValue(roomListResult, new TypeReference<List<ChatRoom>>(){});
 			data.addAll( roomList );
 			
-			data.add( new HomeListItemBtns() );
-			
 			data.add( new HomeListItemDesc2() );
 			
 			homeListAdapter.setData(data);
 			listHome.setAdapter( homeListAdapter );
-			
 		}
 		catch( Exception ex )
 		{
@@ -71,7 +73,7 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("구로구 구로동");
 		List<User> userList = new ArrayList<User>();
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/1.png") );
 		room.setUserList( userList );
 		List<Keyword> keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("20대"));
@@ -85,7 +87,7 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("강남구 역삼동");
 		userList = new ArrayList<User>();
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/2.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
@@ -99,8 +101,8 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("여의도");
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/3.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/4.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("20대"));
@@ -114,10 +116,10 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("강남");
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/5.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/6.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/7.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/8.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
@@ -131,7 +133,7 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("역삼동");
 		userList = new ArrayList<User>();
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/9.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
@@ -145,9 +147,9 @@ public class HomeFragment extends BaseFragment{
 		room.setMaxNumOfUsers(4);
 		room.setLocation("강남역");
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/10.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/11.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/12.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("40대"));
@@ -161,8 +163,8 @@ public class HomeFragment extends BaseFragment{
 		room.setLocation("혜화");
 		room.setMaxNumOfUsers(4);
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/1.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/2.png") );
 		room.setUserList( userList );
 		obj.add( room );
 		
@@ -171,8 +173,8 @@ public class HomeFragment extends BaseFragment{
 		room.setLocation("성수동");
 		room.setMaxNumOfUsers(4);
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/3.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/4.png") );
 		room.setUserList( userList );
 		obj.add( room );
 		
@@ -181,8 +183,8 @@ public class HomeFragment extends BaseFragment{
 		room.setLocation("역삼동");
 		room.setMaxNumOfUsers(4);
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/5.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/6.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
@@ -196,9 +198,9 @@ public class HomeFragment extends BaseFragment{
 		room.setLocation("부산");
 		room.setMaxNumOfUsers(4);
 		userList = new ArrayList<User>();
-		userList.add( new User() );
-		userList.add( new User() );
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/7.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/8.png") );
+		userList.add( new User("http://www.hanintownsg.com/58_run/9.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
@@ -212,7 +214,7 @@ public class HomeFragment extends BaseFragment{
 		room.setLocation("구로동");
 		room.setMaxNumOfUsers(4);
 		userList = new ArrayList<User>();
-		userList.add( new User() );
+		userList.add( new User("http://www.hanintownsg.com/58_run/10.png") );
 		room.setUserList( userList );
 		keywordList = new ArrayList<Keyword>();
 		keywordList.add(new Keyword("30대"));
