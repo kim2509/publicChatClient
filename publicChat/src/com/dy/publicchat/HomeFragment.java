@@ -32,29 +32,29 @@ public class HomeFragment extends BaseFragment{
 	HomeListAdapter homeListAdapter = null;
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		
+
 		try
 		{
 			// TODO Auto-generated method stub
 			super.onActivityCreated(savedInstanceState);
 
 			ListView listHome = (ListView) getActivity().findViewById(R.id.listHome);
-			
+
 			homeListAdapter = new HomeListAdapter( getActivity() );
-			
+
 			String roomListResult = getChatRoomList();
 			ObjectMapper mapper = new ObjectMapper();
 			ArrayList<HomeListItem> data = new ArrayList<HomeListItem>();
-			
+
 			data.add( new HomeListItemBtns() );
-			
+
 			data.add( new HomeListItemDesc1() );
-			
+
 			List<HomeListItem> roomList = mapper.readValue(roomListResult, new TypeReference<List<ChatRoom>>(){});
 			data.addAll( roomList );
-			
+
 			data.add( new HomeListItemDesc2() );
-			
+
 			homeListAdapter.setData(data);
 			listHome.setAdapter( homeListAdapter );
 		}
@@ -63,11 +63,27 @@ public class HomeFragment extends BaseFragment{
 			Log.e("ERROR", ex.getMessage());
 		}
 	} 
-	
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+
+		try
+		{
+			super.onResume();
+
+
+		}
+		catch(Exception ex )
+		{
+
+		}
+	}
+
 	public String getChatRoomList() throws Exception
 	{
 		List<ChatRoom> obj = new ArrayList<ChatRoom>();
-		
+
 		ChatRoom room = new ChatRoom();
 		room.setTitle("오늘 영화볼 사람");
 		room.setMaxNumOfUsers(4);
@@ -81,7 +97,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("영화"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("구로에서 번개");
 		room.setMaxNumOfUsers(4);
@@ -95,7 +111,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("삼겹살"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("싱글 파티");
 		room.setMaxNumOfUsers(4);
@@ -110,7 +126,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("미팅"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("강남 밤사");
 		room.setMaxNumOfUsers(4);
@@ -127,7 +143,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("춤"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("역삼 번개");
 		room.setMaxNumOfUsers(4);
@@ -141,7 +157,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("회"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("강남 스크린 골프");
 		room.setMaxNumOfUsers(4);
@@ -157,7 +173,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("골프"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("대학로 연극번개");
 		room.setLocation("혜화");
@@ -167,7 +183,7 @@ public class HomeFragment extends BaseFragment{
 		userList.add( new User("http://www.hanintownsg.com/58_run/2.png") );
 		room.setUserList( userList );
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("족발 먹을 사람~");
 		room.setLocation("성수동");
@@ -177,7 +193,7 @@ public class HomeFragment extends BaseFragment{
 		userList.add( new User("http://www.hanintownsg.com/58_run/4.png") );
 		room.setUserList( userList );
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("프로그래머 모집.");
 		room.setLocation("역삼동");
@@ -192,7 +208,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("맛집"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("카풀 할 사람");
 		room.setLocation("부산");
@@ -208,7 +224,7 @@ public class HomeFragment extends BaseFragment{
 		keywordList.add(new Keyword("드라이브"));
 		room.setKeywordList(keywordList);
 		obj.add( room );
-		
+
 		room = new ChatRoom();
 		room.setTitle("2대2 미팅할 사람");
 		room.setLocation("구로동");
@@ -226,23 +242,23 @@ public class HomeFragment extends BaseFragment{
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(obj);
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_home, container, false);
-		                      
-//		Button btnQuickChat = (Button) v.findViewById(R.id.btnQuickChat);
-//		btnQuickChat.setOnClickListener( new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				showToastMessage("quick");
-//			}
-//		});
-		
+
+		//		Button btnQuickChat = (Button) v.findViewById(R.id.btnQuickChat);
+		//		btnQuickChat.setOnClickListener( new OnClickListener() {
+		//			
+		//			@Override
+		//			public void onClick(View v) {
+		//				// TODO Auto-generated method stub
+		//				showToastMessage("quick");
+		//			}
+		//		});
+
 		return v;
 	}
 }
